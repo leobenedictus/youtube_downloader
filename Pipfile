@@ -5,9 +5,7 @@ name = "pypi"
 
 [packages]
 streamlit = "*"
-io = "*"
 pytube = "*"
-re = "*"
 
 [dev-packages]
 ipykernel = "*"

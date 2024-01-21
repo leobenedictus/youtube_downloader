@@ -40,34 +40,3 @@ if url and ".com" in url:
             file_name=f"{safe_title}.mp4"
         )
         st.success("Your video is ready!")
-
-st.header("General video downloader")
-
-url2 = st.text_input("")
-
-st.write("Paste the video URL in the box.")
-st.link_button("semi-reliable list of sites that work", "https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md", *, help=None, type="secondary", disabled=False, use_container_width=False)
-
-# Waits for an input with a tweet 
-if url2 and ".com" in url2:
-    with st.spinner("Downloading now... Won't be long!"):
-        
-        with yt_dlp.YoutubeDL() as ydl:
-            ydl.download(url2)
-        
-        data2 = ydl.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
-                # Download the stream to a buffer (in-memory file)
-        buffer2 = io.BytesIO()
-        data2.stream_to_buffer(buffer)
-
-        # Reset buffer pointer to the start
-        buffer2.seek(0)
-
-        # Use the buffer in your download button
-        st.download_button(
-            label="Download mp4 file",
-            data=buffer2,
-            mime='video/mp4',
-            file_name=f"{safe_title}.mp4"
-        )
-        st.success("Your video is ready!")
